@@ -13,9 +13,9 @@ double deviceHeight(BuildContext context) {
 Color primaryColor = Color(0xff1E2124);
 Color bgColor = Color(0xff2E3238);
 Color bgGreyColor = Color(0xffEDEDF5);
-Color blueColor = Color(0xff1281CF);
+Color blueColor = Color(0xff5B97F2);
 Color redColor = Color(0xffCF2412);
-Color purpleColor = Color(0xff656DF9);
+Color purpleColor = Color(0xff6865E9);
 
 TextStyle fontWhite = GoogleFonts.poppins(
   color: Colors.white,

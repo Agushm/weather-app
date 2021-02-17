@@ -78,11 +78,15 @@ class _MainScreenState extends State<MainScreen>
           : Stack(
               children: [
                 Container(
+                    width: deviceWidth(context), height: deviceHeight(context)),
+                Container(
                     width: deviceWidth(context),
-                    height: deviceHeight(context),
+                    height: deviceHeight(context) - (deviceHeight(context) / 3),
                     decoration: BoxDecoration(
-                      color: purpleColor,
-                    )),
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [purpleColor, blueColor]))),
                 Container(
                   width: deviceWidth(context),
                   height: deviceHeight(context),
@@ -141,7 +145,7 @@ class _MainScreenState extends State<MainScreen>
                                             DateTime.now().day)
                                         .toList();
                                     selectedCuaca = value.firstWhere((e) =>
-                                        e.jamCuaca.hour < DateTime.now().hour);
+                                        e.jamCuaca.hour >= DateTime.now().hour);
                                   });
                                 });
                               },
@@ -157,7 +161,7 @@ class _MainScreenState extends State<MainScreen>
                               children: [
                                 Container(
                                   height: 90,
-                                  child: Text('${listCuaca[0].tempC}',
+                                  child: Text('${selectedCuaca.tempC}',
                                       style: fontWhite.copyWith(
                                           fontSize: 80,
                                           fontWeight: FontWeight.w300)),
@@ -213,6 +217,10 @@ class _MainScreenState extends State<MainScreen>
                                 labelStyle: fontBlack,
                                 controller: controller,
                                 indicatorColor: Colors.black,
+                                indicator: UnderlineTabIndicator(
+                                    insets:
+                                        EdgeInsets.symmetric(horizontal: 40),
+                                    borderSide: BorderSide(width: 3)),
                                 tabs: <Widget>[
                                   new Tab(
                                     child: Text('Hari Ini',
